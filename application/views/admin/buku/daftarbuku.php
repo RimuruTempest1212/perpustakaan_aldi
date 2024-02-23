@@ -23,6 +23,10 @@
     <!-- Custom styles for this page -->
     <link href="<?php echo base_url('assets/datatables/datatables.bootstrap4.min.css') ?>" rel="stylesheet">
 
+    <!-- sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <link rel="stylesheet" href="<?= base_url('https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css')?>">
 </head>
 
 <body id="page-top">
@@ -110,6 +114,8 @@
 
             <!-- Main Content -->
             <div id="content">
+
+                
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -345,9 +351,12 @@
                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit<?php echo $item->buku_id ?>">
                                                         Edit
                                                     </button>
-                                                    <a href="<?= base_url('Buku/delete_buku/' . $item->buku_id) ?>"><button type="button" class="btn btn-danger">
-                                                            Hapus
-                                                        </button></a>
+                                                    <a href="<?= base_url('Buku/delete_buku/' . $item->buku_id) ?>" class="delete-button">
+                                                            <button type="button" class="btn btn-danger">
+                                                                Hapus
+                                                            </button>
+                                                        </a>  
+                                                     
                                                 </td>
 
                                             </tr>
@@ -530,6 +539,36 @@
 
     <!-- Page level custom scripts -->
     <script src="assets/js/demo/datatables-demo.js"></script>
+
+    <!-- sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
+
+<script>
+    // Use jQuery to listen for the click event on the delete button
+    $(document).on('click', '.delete-button', function (e) {
+        e.preventDefault(); // Prevent the default behavior of the link
+
+        // Get the href attribute from the link (delete URL)
+        var deleteUrl = $(this).attr('href');
+
+        // Show SweetAlert confirmation
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If the user clicks "Yes, delete it!", redirect to the delete URL
+                window.location.href = deleteUrl;
+            }
+        });
+    });
+</script>
 
 
     <script>
