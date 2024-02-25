@@ -15,6 +15,7 @@
                 <h1>Login</h1>
                 <hr>
                 <p>Selamat Datang di Perpustakaan Digital</p>
+                <?= $this->session->flashdata('message'); ?>
                 <label for="">Email</label>
                 <input type="text" name="email" id="email" placeholder="example@gmail.com ">
                 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Feb 2024 pada 08.33
--- Versi server: 10.4.27-MariaDB
--- Versi PHP: 7.4.33
+-- Generation Time: Feb 25, 2024 at 02:17 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `buku`
+-- Table structure for table `buku`
 --
 
 CREATE TABLE `buku` (
@@ -37,7 +37,7 @@ CREATE TABLE `buku` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `buku`
+-- Dumping data for table `buku`
 --
 
 INSERT INTO `buku` (`buku_id`, `judul`, `penulis`, `penerbit`, `tahun_terbit`, `gambar`) VALUES
@@ -47,7 +47,7 @@ INSERT INTO `buku` (`buku_id`, `judul`, `penulis`, `penerbit`, `tahun_terbit`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategoribuku`
+-- Table structure for table `kategoribuku`
 --
 
 CREATE TABLE `kategoribuku` (
@@ -56,7 +56,7 @@ CREATE TABLE `kategoribuku` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `kategoribuku`
+-- Dumping data for table `kategoribuku`
 --
 
 INSERT INTO `kategoribuku` (`kategori_id`, `namakategori`) VALUES
@@ -69,7 +69,7 @@ INSERT INTO `kategoribuku` (`kategori_id`, `namakategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategoribukurelasi`
+-- Table structure for table `kategoribukurelasi`
 --
 
 CREATE TABLE `kategoribukurelasi` (
@@ -81,7 +81,7 @@ CREATE TABLE `kategoribukurelasi` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `koleksipribadi`
+-- Table structure for table `koleksipribadi`
 --
 
 CREATE TABLE `koleksipribadi` (
@@ -93,7 +93,7 @@ CREATE TABLE `koleksipribadi` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `peminjaman`
+-- Table structure for table `peminjaman`
 --
 
 CREATE TABLE `peminjaman` (
@@ -106,7 +106,7 @@ CREATE TABLE `peminjaman` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `peminjaman`
+-- Dumping data for table `peminjaman`
 --
 
 INSERT INTO `peminjaman` (`peminjaman_id`, `user_id`, `buku_id`, `tanggal_peminjaman`, `tanggal_pengembalian`, `status_peminjaman`) VALUES
@@ -119,7 +119,7 @@ INSERT INTO `peminjaman` (`peminjaman_id`, `user_id`, `buku_id`, `tanggal_peminj
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ulasanbuku`
+-- Table structure for table `ulasanbuku`
 --
 
 CREATE TABLE `ulasanbuku` (
@@ -133,7 +133,7 @@ CREATE TABLE `ulasanbuku` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -143,76 +143,114 @@ CREATE TABLE `user` (
   `email` varchar(255) NOT NULL,
   `nama_lengkap` varchar(255) NOT NULL,
   `alamat` text NOT NULL,
-  `level` enum('administrator','petugas','user') NOT NULL
+  `role_id` int(11) NOT NULL,
+  `is_active` int(1) NOT NULL,
+  `date_created` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `password`, `email`, `nama_lengkap`, `alamat`, `level`) VALUES
-(1, 'auf_muhaemin', 'uhuy12345', 'aufmuhaemin15@gmail.com', 'auf muhaemin', 'jalan. paseh gang. fauzan 1', 'administrator'),
-(2, 'alditempest', 'tempest123', 'tempestaldi12@gmail.com', 'aldi tempest', 'paseh babakan', 'administrator'),
-(3, 'fareltsanyangkasa', 'dilan1990', 'fareltsany13@gmail.com', 'Farel Tsany Angkasa', 'Bojong Tritura', 'administrator'),
-(4, 'galihnugraha', 'senpai123', 'galihnugraha14@gmail.com', 'Muhammad Galih Nugraha', 'Leuwianyar', 'administrator'),
-(5, 'haikalslebew', 'haikalslebew12', 'slebewhaikal@gmail.com', 'Muhammad Haikal ', 'Cihaurbeuti', 'administrator');
+INSERT INTO `user` (`user_id`, `username`, `password`, `email`, `nama_lengkap`, `alamat`, `role_id`, `is_active`, `date_created`, `image`) VALUES
+(1, 'auf_muhaemin', 'uhuy12345', 'aufmuhaemin15@gmail.com', 'auf muhaemin', 'jalan. paseh gang. fauzan 1', 1, 0, 0, ''),
+(2, 'alditempest', 'tempest123', 'tempestaldi12@gmail.com', 'aldi tempest', 'paseh babakan', 1, 0, 0, ''),
+(3, 'fareltsanyangkasa', 'dilan1990', 'fareltsany13@gmail.com', 'Farel Tsany Angkasa', 'Bojong Tritura', 1, 0, 0, ''),
+(4, 'galihnugraha', 'senpai123', 'galihnugraha14@gmail.com', 'Muhammad Galih Nugraha', 'Leuwianyar', 1, 0, 0, ''),
+(5, 'haikalslebew', 'haikalslebew12', 'slebewhaikal@gmail.com', 'Muhammad Haikal ', 'Cihaurbeuti', 1, 0, 0, ''),
+(6, '', '$2y$10$HosByebRYOXm0oZSDDEDA.iF5hZ87Yo8kOBM5IGlwQStKK2CRqGie', 'aldianfal3@gmail.com', '???????????????????????? ????????????????????', '', 2, 1, 1708865688, 'default.jpg'),
+(9, 'walkers', '$2y$10$x4VG3oLYOng7cJURN.ME/OqGyrMfCvi6z.nA4Q2mKUvxXMn7QTUQm', 'aldisaputrawalker@gmail.com', 'aldi', '', 2, 1, 1708865912, 'default.jpg'),
+(12, 'aldi004', '$2y$10$0XhGsF6gkrf.bakr264L.us4I5R.31HPbZEEuVmtjlYmRRYJUdada', 'Levi@gmail.com', 'aldi', '', 2, 1, 1708866879, 'default.jpg'),
+(13, 'RA12345678', '$2y$10$UgWnifUdZBhlVmyLVZ1Nuefq/DTUPc/OKVGiuhwk6qEXuFRjCTvU.', 'diszaid@gmail.com', 'rimuru', '', 2, 1, 1708867002, 'default.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_role`
+--
+
+CREATE TABLE `user_role` (
+  `id` int(11) NOT NULL,
+  `role` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_role`
+--
+
+INSERT INTO `user_role` (`id`, `role`) VALUES
+(1, 'admin'),
+(2, 'member');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `buku`
+-- Indexes for table `buku`
 --
 ALTER TABLE `buku`
   ADD PRIMARY KEY (`buku_id`);
 
 --
--- Indeks untuk tabel `kategoribuku`
+-- Indexes for table `kategoribuku`
 --
 ALTER TABLE `kategoribuku`
   ADD PRIMARY KEY (`kategori_id`);
 
 --
--- Indeks untuk tabel `peminjaman`
+-- Indexes for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
   ADD PRIMARY KEY (`peminjaman_id`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- Indexes for table `user_role`
+--
+ALTER TABLE `user_role`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `buku`
+-- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
   MODIFY `buku_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12408;
 
 --
--- AUTO_INCREMENT untuk tabel `kategoribuku`
+-- AUTO_INCREMENT for table `kategoribuku`
 --
 ALTER TABLE `kategoribuku`
   MODIFY `kategori_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `peminjaman`
+-- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
   MODIFY `peminjaman_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `user_role`
+--
+ALTER TABLE `user_role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

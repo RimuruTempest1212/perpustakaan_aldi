@@ -27,6 +27,24 @@ body {
     margin: 0;
 }
 
+.alert-success {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #2ecc71;
+    border-radius: 5px;
+    color: #2ecc71;
+    background-color: #d4edda;
+    font-size: 14px;
+}
+
+/* If you want to add an icon to the success message, you can use FontAwesome or other icon libraries */
+.alert-success::before {
+    content: '\2713'; /* Unicode character for a checkmark */
+    font-size: 20px;
+    margin-right: 10px;
+    color: #2ecc71;
+}
+
 
 .container {
     width: 100%;
