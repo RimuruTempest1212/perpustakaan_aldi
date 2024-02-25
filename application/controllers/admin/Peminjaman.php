@@ -12,6 +12,7 @@ class Peminjaman extends CI_Controller
     {
 
         $data['peminjaman'] = $this->Pinjaman_model->get_pinjaman();
+        $data['title'] = 'Pinjaman Buku';
         $this->load->view('admin/buku/pinjaman', $data);
     }
 

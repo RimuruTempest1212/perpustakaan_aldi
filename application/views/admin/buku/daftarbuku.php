@@ -11,7 +11,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <title>Data Buku</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+
+    <title><?= $title; ?></title>
 
     <!-- Custom fonts for this template -->
     <link href="assets/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -26,7 +31,7 @@
     <!-- sweetalert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-    <link rel="stylesheet" href="<?= base_url('https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css')?>">
+    <link rel="stylesheet" href="<?= base_url('https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css') ?>">
 </head>
 
 <body id="page-top">
@@ -115,7 +120,7 @@
             <!-- Main Content -->
             <div id="content">
 
-                
+
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -352,11 +357,11 @@
                                                         Edit
                                                     </button>
                                                     <a href="<?= base_url('Buku/delete_buku/' . $item->buku_id) ?>" class="delete-button">
-                                                            <button type="button" class="btn btn-danger">
-                                                                Hapus
-                                                            </button>
-                                                        </a>  
-                                                     
+                                                        <button type="button" class="btn btn-danger">
+                                                            Hapus
+                                                        </button>
+                                                    </a>
+
                                                 </td>
 
                                             </tr>
@@ -431,7 +436,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <?php echo form_open_multipart('insert_buku_proses'); ?>
+                    <?php echo form_open_multipart('insert_buku_proses', 'id="bukuForm"'); ?>
 
                     <div class="form-gorup">
                         <img id="editPreviewImage" src="<?= base_url('uploads/') ?>" alt="Preview Gambar" style="max-width: 100px; display: none;">
@@ -458,7 +463,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary saved-submit">Simpan</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
                     <?= form_close() ?>
                 </div>
@@ -480,7 +485,7 @@
                     </div>
                     <div class="modal-body">
 
-                        <?php echo form_open_multipart('Buku/Update_Buku'); ?>
+                        <?php echo form_open_multipart('Buku/Update_Buku', 'id=bukuFormEdit'); ?>
                         <input type="hidden" name="buku_id" readonly value="<?= $item->buku_id; ?>">
                         <input type="hidden" name="gambar_old" value="<?= $item->gambar; ?>">
 
@@ -510,7 +515,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-primary saved-submit">Simpan</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
                         <?= form_close() ?>
                     </div>
@@ -542,33 +547,10 @@
 
     <!-- sweetalert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
 
-<script>
-    // Use jQuery to listen for the click event on the delete button
-    $(document).on('click', '.delete-button', function (e) {
-        e.preventDefault(); // Prevent the default behavior of the link
+    <script src="<?= base_url('assets/js/alert.js') ?>"></script>
 
-        // Get the href attribute from the link (delete URL)
-        var deleteUrl = $(this).attr('href');
-
-        // Show SweetAlert confirmation
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // If the user clicks "Yes, delete it!", redirect to the delete URL
-                window.location.href = deleteUrl;
-            }
-        });
-    });
-</script>
 
 
     <script>

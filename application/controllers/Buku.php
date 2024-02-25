@@ -4,6 +4,7 @@ class Buku extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('session');
         $this->load->model('DataBuku_model');
         $this->load->helper('form');
     }
@@ -79,6 +80,8 @@ class Buku extends CI_Controller
                 'tahun_terbit' => $tahun_terbit,
             );
 
+
+
             $this->DataBuku_model->insert_buku($insert);
 
 
@@ -118,12 +121,16 @@ class Buku extends CI_Controller
         $data['penerbit'] = $penerbit;
         $data['tahun_terbit'] = $tahun_terbit;
 
+      
         if (!empty($buku_id)) {
             $this->DataBuku_model->update_buku($buku_id, $data);
         } else {
 
             echo "Edit GAGAL";
         }
+
+
+
         redirect(base_url('daftarbuku'));
     }
 }

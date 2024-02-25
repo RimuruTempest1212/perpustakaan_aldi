@@ -1,19 +1,22 @@
 
 <?php
 
-class User extends CI_Controller{
-    public function login(){
-
-        $this->load->view('auth/login');
+class User extends CI_Controller
+{
+    public function login()
+    {
+        $data['title'] = 'Login Perpustakaan';
+        $this->load->view('auth/login', $data);
     }
 
-    public function register(){
-
+    public function register()
+    {
+        
         $this->load->view('admin/register');
     }
 
-    public function dashboard(){
+    public function dashboard()
+    {
         $this->load->view("content_admin/bantuan");
     }
-
 }

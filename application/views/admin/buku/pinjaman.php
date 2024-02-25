@@ -11,7 +11,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <title>Data Buku</title>
+    <title><?= $title; ?></title>
 
     <!-- Custom fonts for this template -->
     <link href="assets/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
