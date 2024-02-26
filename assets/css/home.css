@@ -1,0 +1,58 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 12000px;
+    /* Adjust the maximum width as needed */
+}
+
+.button {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.blog-header-logo {
+    font-size: 1.5rem;
+    /* Adjust the font size as needed */
+    font-weight: bold;
+}
+
+.hr {
+    color: aqua;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+.card-img-top {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.navbar {
+    margin-top: 20px;
+}
+
+.card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card-body {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .blog-header-logo {
+        font-size: 1.2rem;
+    }
+}

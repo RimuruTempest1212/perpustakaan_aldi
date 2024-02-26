@@ -27,5 +27,9 @@ $route['databuku'] = 'Buku/index';
 $route['TambahBuku'] = 'Buku/tambah_buku';
 $route['update_buku'] = 'Buku/Update_Buku';
 
+#Auth
 $route['login'] = 'auth/Login/login';
 $route['register'] = 'auth/register/register';
+
+#User Pages
+$route['home'] = 'user/User/home';

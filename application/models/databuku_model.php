@@ -10,6 +10,7 @@ class DataBuku_model extends CI_Model
 
     public function get_buku()
     {
+        
         $query = $this->db->get('buku');
         return $query->result();
     }
