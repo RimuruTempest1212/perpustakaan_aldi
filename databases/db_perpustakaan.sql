@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2024 at 02:17 PM
+-- Generation Time: Feb 26, 2024 at 08:44 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -41,8 +41,14 @@ CREATE TABLE `buku` (
 --
 
 INSERT INTO `buku` (`buku_id`, `judul`, `penulis`, `penerbit`, `tahun_terbit`, `gambar`) VALUES
-(12406, 'SMK NU TASIKMALAYA', 'sadwad', 'asas', 2025, 'buku_1708585950.png'),
-(12407, 'Es Jeruk', 'sadwad', 'asas', 2025, 'buku_1708585964.jpg');
+(12406, 'SMK NU TASIKMALAYA', 'ALDI', 'SDASD', 2025, 'buku_1708585950.jpg'),
+(12407, 'Es Lemon', 'gugu', 'asas', 2025, 'buku_1708585964.jpg'),
+(12408, 'Lumine', 'XIXIXI', 'WOWOWO', 1232, 'buku_1708960364.png'),
+(12409, 'Lumine 2', 'asdwa', 'dasd', 1231, 'buku_1708960379.png'),
+(12410, 'Lumine Masak ', 'asdwadas', 'HMM', 231, 'buku_1708960398.png'),
+(12415, 'asdwad', 'asd', 'awdad', 12313, 'buku_1708960691.jpg'),
+(12416, 'sadaw', 'dwads', 'dasd', 1231, 'buku_1708960722.jpg'),
+(12417, 'sadwa', 'das', 'da', 231, 'buku_1708960737.jpg');
 
 -- --------------------------------------------------------
 
@@ -154,15 +160,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `email`, `nama_lengkap`, `alamat`, `role_id`, `is_active`, `date_created`, `image`) VALUES
-(1, 'auf_muhaemin', 'uhuy12345', 'aufmuhaemin15@gmail.com', 'auf muhaemin', 'jalan. paseh gang. fauzan 1', 1, 0, 0, ''),
-(2, 'alditempest', 'tempest123', 'tempestaldi12@gmail.com', 'aldi tempest', 'paseh babakan', 1, 0, 0, ''),
-(3, 'fareltsanyangkasa', 'dilan1990', 'fareltsany13@gmail.com', 'Farel Tsany Angkasa', 'Bojong Tritura', 1, 0, 0, ''),
-(4, 'galihnugraha', 'senpai123', 'galihnugraha14@gmail.com', 'Muhammad Galih Nugraha', 'Leuwianyar', 1, 0, 0, ''),
-(5, 'haikalslebew', 'haikalslebew12', 'slebewhaikal@gmail.com', 'Muhammad Haikal ', 'Cihaurbeuti', 1, 0, 0, ''),
-(6, '', '$2y$10$HosByebRYOXm0oZSDDEDA.iF5hZ87Yo8kOBM5IGlwQStKK2CRqGie', 'aldianfal3@gmail.com', '???????????????????????? ????????????????????', '', 2, 1, 1708865688, 'default.jpg'),
-(9, 'walkers', '$2y$10$x4VG3oLYOng7cJURN.ME/OqGyrMfCvi6z.nA4Q2mKUvxXMn7QTUQm', 'aldisaputrawalker@gmail.com', 'aldi', '', 2, 1, 1708865912, 'default.jpg'),
-(12, 'aldi004', '$2y$10$0XhGsF6gkrf.bakr264L.us4I5R.31HPbZEEuVmtjlYmRRYJUdada', 'Levi@gmail.com', 'aldi', '', 2, 1, 1708866879, 'default.jpg'),
-(13, 'RA12345678', '$2y$10$UgWnifUdZBhlVmyLVZ1Nuefq/DTUPc/OKVGiuhwk6qEXuFRjCTvU.', 'diszaid@gmail.com', 'rimuru', '', 2, 1, 1708867002, 'default.jpg');
+(14, 'admin', '$2y$10$CvX7Zj/ZSwWu1zwWaGQ5V.Q7/1aObuFHWWyOqgAyzsX/l.CAuhVga', 'aldianfal3@gmail.com', 'ALDI SAPUTRA', '', 1, 1, 1708970857, 'default.jpg'),
+(15, 'member', '$2y$10$2BaMtq3ntIzAeVL7gMYJxOL1vZrrTlcYonjP9TwWF5cSckIOJwMO.', 'aldisaputrawalker@gmail.com', 'ALDI', '', 2, 1, 1708970935, 'default.jpg'),
+(16, 'walkers', '$2y$10$nCyeocgwpp1pYadPiFf1JO5V40LuUdb6Uw9JwGo7sMSqSHDrUp4Ti', 'Levi@gmail.com', 'rimuru', '', 2, 1, 1708974039, 'default.jpg');
 
 -- --------------------------------------------------------
 
@@ -226,7 +226,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `buku_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12408;
+  MODIFY `buku_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12418;
 
 --
 -- AUTO_INCREMENT for table `kategoribuku`
@@ -244,7 +244,7 @@ ALTER TABLE `peminjaman`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `user_role`

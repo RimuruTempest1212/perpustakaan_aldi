@@ -69,46 +69,7 @@ function initializeSavedButton() {
 }
 
 
-function initializeEditButton() {
-    console.log("initializeEditButton function called");
-    // Bind the click event to the form submission
-    $('#bukuFormEdit').submit(function (e) {
-        e.preventDefault(); // Prevent the default form submission
 
-        // Serialize the form data
-        var formData = new FormData($(this)[0]);
-
-        // Use AJAX to submit the form
-        $.ajax({
-            type: 'POST',
-            url: $(this).attr('action'),
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (response) {
-                // Handle the success response here
-
-                // Show SweetAlert confirmation
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Buku Berhasil di perbarui",
-                    showConfirmButton: false,
-                    timer: 1500
-                }).then(() => {
-                    // Redirect to 'daftarbuku'
-                    window.location.href = "daftarbuku";
-                });
-            },
-            error: function (error) {
-                // Handle the error response here
-                console.error('Error:', error);
-            }
-        });
-    });
-}
-
-// Other functions
 
 function checkForSavedMessageAndRedirect() {
     // ... your existing code ...
@@ -121,3 +82,5 @@ $(document).ready(function () {
     checkForSavedMessageAndRedirect();
     // Initialize any other functions or event listeners you need
 });
+
+

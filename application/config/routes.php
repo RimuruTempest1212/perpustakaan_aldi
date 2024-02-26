@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
-$route['default_controller'] = 'User/login';
+$route['default_controller'] = 'auth';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
@@ -28,8 +28,9 @@ $route['TambahBuku'] = 'Buku/tambah_buku';
 $route['update_buku'] = 'Buku/Update_Buku';
 
 #Auth
-$route['login'] = 'auth/Login/login';
-$route['register'] = 'auth/register/register';
+$route['login'] = 'login';
+$route['register'] = 'auth/register';
 
 #User Pages
 $route['home'] = 'user/User/home';
+$route['logout'] = 'user/User/logout';

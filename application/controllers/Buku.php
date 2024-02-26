@@ -9,6 +9,8 @@ class Buku extends CI_Controller
         $this->load->helper('form');
     }
 
+   
+
     public function index()
     {
         $data['buku'] = $this->DataBuku_model->get_buku();
@@ -129,6 +131,9 @@ class Buku extends CI_Controller
             echo "Edit GAGAL";
         }
 
+        $this->session->set_flashdata('success','<div class="alert alert-success" role="alert">
+        Congratulation! Your book data has been updated
+       </div>');
 
 
         redirect(base_url('daftarbuku'));

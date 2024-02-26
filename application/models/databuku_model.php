@@ -48,4 +48,5 @@ class DataBuku_model extends CI_Model
         return $this->db->get('buku');
         // $this->db->delete('buku', array('buku_id' => $id));
     }
+
 }

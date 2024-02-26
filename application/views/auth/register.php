@@ -32,7 +32,7 @@
 
                 <button type="submit">Register</button>
                 <p>
-                    Already have an account? <a href="<?= base_url('login') ?>">Login here</a>
+                    Already have an account? <a href="<?= base_url('auth') ?>">Login here</a>
                 </p>
 
             </form>

@@ -9,7 +9,26 @@
  * Copyright 2011-2021 The Bootstrap Authors
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+
+ 
  */
+
+ .alert-success {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #2ecc71;
+  border-radius: 5px;
+  color: #2ecc71;
+  background-color: #d4edda;
+  font-size: 14px;
+}
+
+.alert-success::before {
+  content: '\2713'; /* Unicode character for a checkmark */
+  font-size: 20px;
+  margin-right: 10px;
+  color: #2ecc71;
+}
 :root {
   --blue: #4e73df;
   --indigo: #6610f2;

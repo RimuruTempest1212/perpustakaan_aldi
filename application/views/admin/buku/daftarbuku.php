@@ -326,7 +326,9 @@
                             <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
                                 Tambah Buku
                             </button>
+                            
                         </div>
+                        <?= $this->session->flashdata('success')?>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -485,7 +487,7 @@
                     </div>
                     <div class="modal-body">
 
-                        <?php echo form_open_multipart('Buku/Update_Buku', 'id=bukuFormEdit'); ?>
+                        <?php echo form_open_multipart('Buku/Update_Buku'); ?>
                         <input type="hidden" name="buku_id" readonly value="<?= $item->buku_id; ?>">
                         <input type="hidden" name="gambar_old" value="<?= $item->gambar; ?>">
 
@@ -515,7 +517,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary saved-submit">Simpan</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
                         <?= form_close() ?>
                     </div>

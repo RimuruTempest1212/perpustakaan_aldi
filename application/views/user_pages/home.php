@@ -1,13 +1,17 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Daftar Buku Perpustakaan</title>
-<!-- Bootstrap core CSS -->
-<link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- Custom styles for this template -->
-<link rel="stylesheet" href="<?= base_url('assets/css/home.css')?>">
-<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.0/css/all.min.css" integrity="sha512-gRH0EcIcYBFkQTnbpO8k0WlsD20x5VzjhOA1Og8+ZUAhcMUCvd+APD35FJw3GzHAP3e+mP28YcDJxVr745loHw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Buku Perpustakaan</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="<?= base_url('assets/css/home.css')?>">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.0/css/all.min.css" integrity="sha512-gRH0EcIcYBFkQTnbpO8k0WlsD20x5VzjhOA1Og8+ZUAhcMUCvd+APD35FJw3GzHAP3e+mP28YcDJxVr745loHw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
 </head>
 <body>
 <div class="container">
@@ -15,25 +19,23 @@
     <div class="container">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 pt-1">
-                <a class="text-muted" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3">
-                        <circle cx="10.5" cy="10.5" r="7.5"></circle>
-                        <line x1="21" y1="21" x2="15.8" y2="15.8"></line>
-                    </svg>
-                </a>
+                <input type="text" id="filter" placeholder="Cari disini...." class="form-control shadow-none">
             </div>
+
             <div class="col-4 text-center">
                 <a class="blog-header-logo text-light" href="#">Perpustakaan Digital</a>
             </div>
-            <div class="hr">
-                <hr>
-            </div>
+
             <div class="col-4 d-flex justify-content-end align-items-center">
-                <a class="btn btn-sm btn-outline-light" href="#">Login</a>
+                <button id="toggleButton" class="btn btn-light d-block d-md-none"><i class="fas fa-bars"></i></button>
+
+                <!-- Add the Logout Button -->
+                <a href="<?= base_url('logout') ?>" class="btn btn-light ml-3">Logout</a>
             </div>
         </div>
-        <div class="sidebar ">
-            <div class="nav-scroller ">
+
+        <div class="sidebar">
+            <div class="nav-scroller">
                 <nav class="nav d-flex justify-content-between">
                     <a class="p-2 text-light" href="#">Bisnis</a>
                     <a class="p-2 text-light" href="#">Fiksi</a>
@@ -49,16 +51,38 @@
     </div>
 </header>
 
-<div class="container">
+<div class="container-1">
     <h3 class="pb-3 font-italic border-bottom">Daftar Buku</h3>
     <div class="row">
         <?php foreach ($buku as $item) : ?>
-            <div class="col-md-4 mb-4">
+            <div class="col-md-3 mb-3">
                 <div class="card">
                     <img class="card-img-top" src="<?= base_url() . './uploads/' . $item->gambar ?>" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title"><?= $item->judul ?></h5>
-                        <p class="card-text"><small class="text-muted"><?= $item->penerbit ?></small></p>
+                        <h5 class="card-title" id="judul"><?= $item->judul ?></h5>
+                        <div class="table-responsive">
+                        <div class="table">
+                        <table align="center"> 
+                            <tbody>
+                            <tr>
+                                <td id="penulis">Penulis</td>
+                                <td>:</td>
+                                <td><small class="text-muted"><?= $item->penulis ?></small></td>
+                            </tr>
+                            <tr>
+                                <td>Penerbit</td>
+                                <td>:</td>
+                                <td><small class="text-muted"><?= $item->penerbit ?></small></td>
+                            </tr>
+                            <tr>
+                                <td>Tahun Terbit</td>
+                                <td>:</td>
+                                <td><small class="text-muted"><?= $item->tahun_terbit ?></small></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        </div>
                     </div>
                     <div class="button text-center">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit<?= $item->buku_id ?>">
@@ -90,7 +114,37 @@
 </nav>
 <hr/>
 <nav class="navbar navbar-expand-sm navbar-light d-flex justify-content-between" style="background-color: #e3f2fd;">
-<a class="p-2 text-muted" href="#">&copy; Ilham Setia Bhakti - 2022</a>
+<a class="p-2 text-muted" href="#">&copy; Muhaman Aldi Saputra</a>
 </nav>
+
+<script src="<?= base_url('assets/js/search.js')?>"></script>
+
+
+<script>
+    // JavaScript function to toggle the sidebar
+    function toggleSidebar() {
+        var sidebar = document.querySelector('.sidebar');
+        sidebar.classList.toggle('show');
+    }
+
+    // JavaScript event listener to trigger the toggle on button click
+    var toggleButton = document.getElementById('toggleButton');
+    if (toggleButton) {
+        toggleButton.addEventListener('click', toggleSidebar);
+    }
+</script>
+
+
+
+<script src="assets/jquery/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/jquery-easing/jquery.easing.min.js"></script>
+<script src="assets/js/sb-admin-2.min.js"></script>
+<script src="assets/datatables/jquery.datatables.min.js"></script>
+<script src="assets/datatables/datatables.bootstrap4.min.js"></script>
+<script src="assets/js/demo/datatables-demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
+
 </body>
 </html>

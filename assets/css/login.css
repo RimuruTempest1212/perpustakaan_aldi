@@ -18,6 +18,11 @@ body::before {
     background-size: cover;
     filter: brightness(70%);
 }
+.pl-3.text-danger,
+.text-danger {
+    color: red !important;
+}
+
 
 body {
     display: flex;
@@ -34,6 +39,24 @@ body {
     border-radius: 5px;
     color: #2ecc71;
     background-color: #d4edda;
+    font-size: 14px;
+}
+
+/* If you want to add an icon to the success message, you can use FontAwesome or other icon libraries */
+.alert-danger::before {
+    content: '\2716'; /* Unicode character for a checkmark */
+    font-size: 20px;
+    margin-right: 10px;
+    color: #f0f8f4;
+}
+
+.alert-danger {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #f01f1f;
+    border-radius: 5px;
+    color: #f7f3f3;
+    background-color: #f32323;
     font-size: 14px;
 }
 
