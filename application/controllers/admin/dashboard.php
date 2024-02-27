@@ -10,8 +10,13 @@ class Dashboard extends CI_Controller
 
     public function home()
     {
+        $data['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = 'Dashboard Perpustakaan';
+        $this->load->view("admin/template/header", $data);
+        $this->load->view("admin/template/sidebar", $data);
+        $this->load->view("admin/template/topbar", $data);
         $this->load->view("admin/dashboard", $data);
+        $this->load->view("admin/template/footer");
     }
 
     public function charts()
@@ -31,6 +36,18 @@ class Dashboard extends CI_Controller
 
         $data['buku'] = $this->DataBuku_model->get_buku();
         $data['title'] = 'Daftar Buku';
+        
         $this->load->view('admin/buku/daftarbuku', $data);
+       
+    }
+       
+    
+
+    public function profile(){
+
+        $data['subtitle'] = 'My Profile';
+        $data['title'] = 'My Profile';
+        $data['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('admin/profile',$data);
     }
 }

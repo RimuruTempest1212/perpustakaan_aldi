@@ -18,22 +18,48 @@
 <header class="blog-header py-3" style="background-color: #343a40; color: #fff;">
     <div class="container">
         <div class="row flex-nowrap justify-content-between align-items-center">
-            <div class="col-4 pt-1">
+            <div class="col-3 pt-1">
                 <input type="text" id="filter" placeholder="Cari disini...." class="form-control shadow-none">
             </div>
 
             <div class="col-4 text-center">
                 <a class="blog-header-logo text-light" href="#">Perpustakaan Digital</a>
-            </div>
 
+                </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
                 <button id="toggleButton" class="btn btn-light d-block d-md-none"><i class="fas fa-bars"></i></button>
-
-                <!-- Add the Logout Button -->
-                <a href="<?= base_url('logout') ?>" class="btn btn-light ml-3">Logout</a>
+                
+          
+                            <!-- <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <img class="img-profile rounded-circle" src="<?= base_url('assets/profile') . $user['image']?>">
+                            </a>
+                            Dropdown - User Information
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div> -->
+                        
             </div>
         </div>
 
+       
+        
         <div class="sidebar">
             <div class="nav-scroller">
                 <nav class="nav d-flex justify-content-between">
@@ -45,6 +71,7 @@
                     <a class="p-2 text-light" href="#">Teknologi</a>
                     <a class="p-2 text-light" href="#">Motivasi</a>
                     <a class="p-2 text-light" href="#">Novel</a>
+                    <a href="<?= base_url('logout') ?>" class="btn btn-dark text-light">Logout</a>
                 </nav>
             </div>
         </div>

@@ -16,7 +16,7 @@ class User extends CI_Controller
 
     public function home(){
 
-        // $data{'user'} = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
+        // $data['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
         $data['buku'] = $this->DataBuku_model->get_buku();
 
         // echo"Welcome".$data['user']['name'];
