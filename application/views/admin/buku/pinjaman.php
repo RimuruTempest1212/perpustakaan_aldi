@@ -89,10 +89,16 @@
             </li>
 
             <!-- Nav Item - Pinjaman Buku -->
-            <li class="nav-item active">
+            <li class="nav-item active ">
                 <a class="nav-link" href=<?= base_url('pinjamanbuku') ?>>
                     <i class="fas fa-fw fa-table"></i>
                     <span>Pinjaman Buku</span></a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link active" href=<?= base_url('data_user') ?>>
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>user</span></a>
             </li>
 
             <!-- Divider -->

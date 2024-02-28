@@ -91,19 +91,20 @@
             </li>
 
             <!-- Nav Item - Data Buku -->
-            <li class="nav-item active">
+            <li class="nav-item ">
                 <a class="nav-link" href=<?= base_url('daftarbuku') ?>>
                     <i class="fas fa-fw fa-table"></i>
                     <span>Data Buku</span></a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a class="nav-link" href=<?= base_url('pinjamanbuku') ?>>
                     <i class="fas fa-fw fa-table"></i>
                     <span>Pinjaman Buku</span></a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" href=<?= base_url('data_user') ?>>
+
+            <li class="nav-item active">
+                <a class="nav-link active" href=<?= base_url('data_user') ?>>
                     <i class="fas fa-fw fa-table"></i>
                     <span>user</span></a>
             </li>
@@ -327,16 +328,16 @@
                     <div class="card shadow mb-4">
 
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Daftar Buku</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Daftar User</h6>
                             <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
-                                Tambah Buku
+                                Tambah User
                             </button>
 
                         </div>
                         <?= $this->session->flashdata('success') ?>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <!-- <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>NO</th>
@@ -376,7 +377,7 @@
 
                                     </tbody>
 
-                                </table>
+                                </table> -->
                             </div>
                         </div>
                     </div>

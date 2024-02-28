@@ -19,6 +19,7 @@ $route['pinjamanbuku'] = 'admin/Peminjaman/daftarpinjaman';
 $route['pinjaman_proses'] = 'admin/Peminjaman/pinjaman_aksi';
 $route['delete_pinjaman/(:any)'] = 'admin/Peminjaman/delete_pinjaman/$1';
 $route['update_pinjaman'] = 'admin/Peminjaman/pinjaman_aksi_update';
+$route['data_user'] = 'admin/Data_User';
 
 #Data Buku
 $route['insert_buku_proses'] = 'Buku/insert_buku_NEW';
