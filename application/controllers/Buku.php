@@ -9,11 +9,13 @@ class Buku extends CI_Controller
         $this->load->helper('form');
     }
 
-   
+
 
     public function index()
     {
+
         $data['buku'] = $this->DataBuku_model->get_buku();
+        $data['subtitle'] = 'Daftar Semua Buku';
         $this->load->view('data_buku/databuku_view',  $data);
     }
 
@@ -123,7 +125,7 @@ class Buku extends CI_Controller
         $data['penerbit'] = $penerbit;
         $data['tahun_terbit'] = $tahun_terbit;
 
-      
+
         if (!empty($buku_id)) {
             $this->DataBuku_model->update_buku($buku_id, $data);
         } else {
@@ -131,7 +133,7 @@ class Buku extends CI_Controller
             echo "Edit GAGAL";
         }
 
-        $this->session->set_flashdata('success','<div class="alert alert-success" role="alert">
+        $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">
         Congratulation! Your book data has been updated
        </div>');
 

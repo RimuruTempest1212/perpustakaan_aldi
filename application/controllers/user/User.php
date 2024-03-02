@@ -19,7 +19,7 @@ class User extends CI_Controller
 
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['buku'] = $this->DataBuku_model->get_buku();
-
+        
         // echo"Welcome".$data['user']['name'];
         $this->load->view('user_pages/home', $data);
     }

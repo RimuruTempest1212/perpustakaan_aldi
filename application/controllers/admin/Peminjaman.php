@@ -10,9 +10,10 @@ class Peminjaman extends CI_Controller
 
     public function daftarpinjaman()
     {
-
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['peminjaman'] = $this->Pinjaman_model->get_pinjaman();
         $data['title'] = 'Pinjaman Buku';
+        $data['subtitle'] = 'Semua Data Pinjaman';
         $this->load->view('admin/buku/pinjaman', $data);
     }
 
