@@ -100,6 +100,11 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>user</span></a>
             </li>
+            <li class="nav-item ">
+           <a class="nav-link" href=<?= base_url('kategori') ?>>
+               <i class="fas fa-fw fa-table"></i>
+               <span>Kategori</span></a>
+       </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

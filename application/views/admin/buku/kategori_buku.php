@@ -36,6 +36,7 @@
 
 <body id="page-top">
 
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -45,7 +46,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href=<?= base_url('admin') ?>>
 
-                <div class="sidebar-brand-text mx-3">Daftar Buku</div>
+                <div class="sidebar-brand-text mx-3">Kategori Buku</div>
             </a>
 
             <!-- Divider -->
@@ -65,6 +66,7 @@
             <div class="sidebar-heading">
                 Pages
             </div>
+
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -97,18 +99,18 @@
                     <span>Data Buku</span></a>
             </li>
 
-            <li class="nav-item ">
+            <li class="nav-item">
                 <a class="nav-link" href=<?= base_url('pinjamanbuku') ?>>
                     <i class="fas fa-fw fa-table"></i>
                     <span>Pinjaman Buku</span></a>
             </li>
-
-            <li class="nav-item active">
-                <a class="nav-link active" href=<?= base_url('data_user') ?>>
+            <li class="nav-item ">
+                <a class="nav-link" href=<?= base_url('data_user') ?>>
                     <i class="fas fa-fw fa-table"></i>
                     <span>user</span></a>
             </li>
-            <li class="nav-item ">
+
+            <li class="nav-item active">
                 <a class="nav-link" href=<?= base_url('kategori') ?>>
                     <i class="fas fa-fw fa-table"></i>
                     <span>Kategori</span></a>
@@ -294,7 +296,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $name_user['nama_lengkap']; ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $user['nama_lengkap']; ?></span>
                                 <img class="img-profile rounded-circle" src="<?= base_url('assets/img/profile/default.jpg') ?>">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -326,19 +328,20 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+
+
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800"><?= $subtitle; ?></h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 
-
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
 
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Daftar User</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Kategori Buku</h6>
                             <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
-                                Tambah User
+                                Tambah Kategori
                             </button>
 
                         </div>
@@ -349,38 +352,25 @@
                                     <thead>
                                         <tr>
                                             <th>NO</th>
-                                            <th>Profile</th>
-                                            <th>Email</th>
-                                            <th>Username</th>
+                                            <th>Nama Kategori</th>
 
-                                            <th>Nama Lengkap</th>
-                                            <th>alamat</th>
-                                            <th>Status Account</th>
-                                            <th>Status Active</th>
-                                            <th>Tanggal Buat Account</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        <?php foreach ($user as $item) : ?>
+                                        <?php foreach ($kategori as $item) : ?>
                                             <tr>
 
-                                                <td><?php echo $item->user_id ?></td>
-                                                <td align="center"><img src="<?php echo base_url() . './profile/' . $item->image ?>" width="100"></td>
-                                                <td><?php echo $item->email ?></td>
-                                                <td><?php echo $item->username ?></td>
+                                                <td><?php echo $item->kategori_id ?></td>
 
-                                                <td><?php echo $item->nama_lengkap ?></td>
-                                                <td><?php echo $item->alamat ?></td>
-                                                <td><?php echo $item->role_id ?></td>
-                                                <td><?php echo $item->is_active ?></td>
-                                                <td><?= date('d F Y', $item->date_created) ?></td>
+                                                <td><?php echo $item->namakategori ?></td>
+
                                                 <td>
-                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit<?php echo $item->user_id ?>">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit<?php echo $item->kategori_id ?>">
                                                         Edit
                                                     </button>
-                                                    <a href="<?= base_url('Buku/delete_buku/' . $item->user_id) ?>" class="delete-button">
+                                                    <a href="<?= base_url('Buku/delete_buku/' . $item->kategori_id) ?>" class="delete-button">
                                                         <button type="button" class="btn btn-danger">
                                                             Hapus
                                                         </button>
@@ -498,9 +488,9 @@
     <!-- Edit Buku -->
 
     <!-- Modal -->
-    <!-- <?php $no = 0;
-            foreach ($user as $item) : $no++; ?>
-        <div class="modal fade" id="edit<?php echo $item->user_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <?php $no = 0;
+    foreach ($buku as $item) : $no++; ?>
+        <div class="modal fade" id="edit<?php echo $item->buku_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -510,14 +500,14 @@
                     <div class="modal-body">
 
                         <?php echo form_open_multipart('Buku/Update_Buku'); ?>
-                        <input type="hidden" name="buku_id" readonly value="<?= $item->user_id; ?>">
-                        <input type="hidden" name="gambar_old" value="<?= $item->image; ?>">
+                        <input type="hidden" name="buku_id" readonly value="<?= $item->buku_id; ?>">
+                        <input type="hidden" name="gambar_old" value="<?= $item->gambar; ?>">
 
                         <div class="form-gorup">
                             <p>Gambar Harus Berupa jpg</p>
                             <img id="previewImage" src="<?= base_url('uploads/') ?>" alt="Preview Gambar" style="max-width: 100px; display: none;">
                             <label for="">Gambar Buku</label>
-                            <input type="file" name="gambar" id="gambar" class="form-control" alue="<?= $item->image; ?>">
+                            <input type="file" name="gambar" id="gambar" class="form-control" alue="<?= $item->gambar; ?>">
                         </div>
                         <br>
                         <img src="<?php echo base_url() . './uploads/' . $item->gambar ?>" width="100">
@@ -546,7 +536,7 @@
                 </div>
             </div>
         </div>
-    <?php endforeach; ?> -->
+    <?php endforeach; ?>
     <!-- Button trigger modal -->
 
 
