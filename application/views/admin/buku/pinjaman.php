@@ -11,6 +11,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     <title><?= $title; ?></title>
 
     <!-- Custom fonts for this template -->
@@ -22,7 +25,7 @@
 
     <!-- Custom styles for this page -->
     <link href="<?php echo base_url('assets/datatables/datatables.bootstrap4.min.css') ?>" rel="stylesheet">
-
+    <link rel="stylesheet" href="<?= base_url('https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css') ?>">
 </head>
 
 <body id="page-top">
@@ -360,9 +363,11 @@
                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit<?php echo $item->buku_id ?>">
                                                         Edit
                                                     </button>
-                                                    <a href="<?= base_url('delete_pinjaman/' . $item->peminjaman_id) ?>"><button type="button" class="btn btn-danger">
+                                                    <a href="<?= base_url('delete_pinjaman/' . $item->peminjaman_id) ?>" class="delete-button">
+                                                        <button type="button" class="btn btn-danger">
                                                             Hapus
-                                                        </button></a>
+                                                        </button>
+                                                    </a>
                                                 </td>
 
                                             </tr>
@@ -437,7 +442,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <?php echo form_open_multipart('pinjaman_proses'); ?>
+                    <?php echo form_open_multipart('pinjaman_proses', 'id="pinjamanForm"'); ?>
 
                     < <div class="form-gorup">
                         <label for="">User ID</label>
@@ -466,7 +471,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="submit" class="btn btn-primary saved-submit">Simpan</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
                 <?= form_close() ?>
             </div>
@@ -488,7 +493,7 @@
                     </div>
                     <div class="modal-body">
 
-                        <?php echo form_open_multipart('update_pinjaman'); ?>
+                        <?php echo form_open_multipart('update_pinjaman',array('class' => 'update-form')); ?>
                         <input type="hidden" name="peminjaman_id" readonly value="<?= $item->peminjaman_id; ?>">
 
                         <div class="form-gorup">
@@ -529,6 +534,54 @@
 
 
 
+    <script>
+    $('.update-form').submit(function (e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        // Serialize the form data
+        var formData = new FormData($(this)[0]);
+
+        // Get the form action attribute
+        var formAction = $(this).attr('action');
+
+        // Use AJAX to submit the form
+        $.ajax({
+            type: 'POST',
+            url: formAction,
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                // Handle the success response here
+
+                // Show SweetAlert confirmation
+                Swal.fire({
+                    title: "Apakah Anda ingin menyimpan perubahan?",
+                    showDenyButton: true,
+                  
+                    confirmButtonText: "Simpan",
+                    denyButtonText: `Batal`
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        Swal.fire("Simpan!", "", "success").then(() => {
+                            // Redirect to "daftarbuku" after saving
+                            window.location.href = "pinjamanbuku";
+                        });
+                    } else if (result.isDenied) {
+                        Swal.fire("Perubahan tidak disimpan", "", "info");
+                    }
+                });
+            },
+            error: function (error) {
+                // Handle the error response here
+                console.error('Error:', error);
+            }
+        });
+    });
+</script>
+
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="assets/jquery/jquery.min.js"></script>
@@ -547,6 +600,7 @@
     <!-- Page level custom scripts -->
     <script src="assets/js/demo/datatables-demo.js"></script>
 
+    <script src="<?= base_url('assets/js/alert_pinjam.js') ?>"></script>
 
     <script>
         // Fungsi untuk menampilkan gambar yang diunggah

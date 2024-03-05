@@ -345,11 +345,11 @@
                             </button>
 
                         </div>
-                        <?= $this->session->flashdata('success') ?>
+                        <!-- <?= $this->session->flashdata('success') ?> -->
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
+                                    <thead align="center">
                                         <tr>
                                             <th>NO</th>
                                             <th>Gambar Buku</th>
@@ -357,7 +357,7 @@
                                             <th>Penulis</th>
                                             <th>Penerbit</th>
                                             <th>Tahun Terbit</th>
-                                            <th>Aksi</th>
+                                            <th colspan="2">Aksi</th>
                                         </tr>
                                     </thead>
 
@@ -375,11 +375,14 @@
                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit<?php echo $item->buku_id ?>">
                                                         Edit
                                                     </button>
+                                                    <td>
                                                     <a href="<?= base_url('Buku/delete_buku/' . $item->buku_id) ?>" class="delete-button">
                                                         <button type="button" class="btn btn-danger">
                                                             Hapus
                                                         </button>
                                                     </a>
+                                                    </td>
+                                                  
 
                                                 </td>
 
@@ -504,7 +507,7 @@
                     </div>
                     <div class="modal-body">
 
-                        <?php echo form_open_multipart('Buku/Update_Buku'); ?>
+                        <?php  echo form_open_multipart('Buku/Update_Buku',array('class' => 'update-form')); ?>
                         <input type="hidden" name="buku_id" readonly value="<?= $item->buku_id; ?>">
                         <input type="hidden" name="gambar_old" value="<?= $item->gambar; ?>">
 
@@ -570,7 +573,52 @@
 
     <script src="<?= base_url('assets/js/alert.js') ?>"></script>
 
+    <script>
+    $('.update-form').submit(function (e) {
+        e.preventDefault(); // Prevent the default form submission
 
+        // Serialize the form data
+        var formData = new FormData($(this)[0]);
+
+        // Get the form action attribute
+        var formAction = $(this).attr('action');
+
+        // Use AJAX to submit the form
+        $.ajax({
+            type: 'POST',
+            url: formAction,
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                // Handle the success response here
+
+                // Show SweetAlert confirmation
+                Swal.fire({
+                    title: "Apakah Anda ingin menyimpan perubahan?",
+                    showDenyButton: true,
+                   
+                    confirmButtonText: "Simpan",
+                    denyButtonText: `Batal`
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        Swal.fire("Simpan!", "", "success").then(() => {
+                            // Redirect to "daftarbuku" after saving
+                            window.location.href = "daftarbuku";
+                        });
+                    } else if (result.isDenied) {
+                        Swal.fire("Perubahan tidak disimpan", "", "info");
+                    }
+                });
+            },
+            error: function (error) {
+                // Handle the error response here
+                console.error('Error:', error);
+            }
+        });
+    });
+</script>
 
     <script>
         // Fungsi untuk menampilkan gambar yang diunggah

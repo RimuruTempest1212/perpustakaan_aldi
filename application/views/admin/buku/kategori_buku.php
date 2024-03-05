@@ -563,7 +563,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
 
-    <script src="<?= base_url('assets/js/alert.js') ?>"></script>
+    <script src="<?= base_url('assets/js/alert_pinjam.js') ?>"></script>
 
 
 

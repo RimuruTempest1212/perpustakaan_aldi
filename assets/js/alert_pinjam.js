@@ -78,7 +78,7 @@ initializeDeleteButton();
 
 function initializeSavedButton() {
     // Bind the click event to the form submission
-    $('#bukuForm').submit(function (e) {
+    $('#pinjamanForm').submit(function (e) {
         e.preventDefault(); // Prevent the default form submission
 
         // Serialize the form data
@@ -98,12 +98,12 @@ function initializeSavedButton() {
                 Swal.fire({
                     position: "center",
                     icon: "success",
-                    title: "Buku Berhasil ditambahkan",
+                    title: "Pinjaman Berhasil ditambahkan",
                     showConfirmButton: false,
                     timer: 1500
                 }).then(() => {
                     // Redirect to 'daftarbuku'
-                    window.location.href = "daftarbuku";
+                    window.location.href = "pinjamanbuku";
                 });
             },
             error: function (error) {
