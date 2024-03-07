@@ -38,6 +38,7 @@ class Data_User extends CI_Controller
             $image = $this->upload->data();
             $email = $this->input->post('email', TRUE);
             $username = $this->input->post('username', TRUE);
+            $password = $this->input->post('password', TRUE);
             $nama_lengkap = $this->input->post('nama_lengkap', TRUE);
             $alamat = $this->input->post('alamat', TRUE);
             
@@ -46,6 +47,7 @@ class Data_User extends CI_Controller
                 'image' => $filename,
                 'email' => $email,
                 'username' => $username,
+                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                 'nama_lengkap' => $nama_lengkap,
                 'alamat' => $alamat,
                 'role_id' =>2,

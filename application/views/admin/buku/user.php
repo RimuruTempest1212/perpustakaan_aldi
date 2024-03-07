@@ -480,6 +480,10 @@
                         <input type="text" name="username" id="" class="form-control" placeholder="Username?" require="">
                     </div>
                     <div class="form-gorup">
+                        <label for="">Password</label>
+                        <input type="password" name="password" id="" class="form-control" placeholder="Password?" require="">
+                    </div>
+                    <div class="form-gorup">
                         <label for="">Nama Lengkap</label>
                         <input type="text" name="nama_lengkap" id="" class="form-control" placeholder="Nama Lengkap?" require="">
                     </div>
