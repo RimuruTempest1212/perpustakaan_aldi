@@ -346,7 +346,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
+                                    <thead align="center">
                                         <tr>
                                             <th>NO</th>
                                             <th>Profile</th>
@@ -358,7 +358,7 @@
                                             <th>Status Account</th>
                                             <th>Status Active</th>
                                             <th>Tanggal Buat Account</th>
-                                            <th>Aksi</th>
+                                            <th colspan="2">Aksi</th>
                                         </tr>
                                     </thead>
 
@@ -376,11 +376,13 @@
                                                 <td><?php echo $item->role_id ?></td>
                                                 <td><?php echo $item->is_active ?></td>
                                                 <td><?= date('d F Y', $item->date_created) ?></td>
+                                                
                                                 <td>
-                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit<?php echo $item->user_id ?>">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit<?php echo $item->user_id ?>">
                                                         Edit
                                                     </button>
-                                                    <a href="<?= base_url('Buku/delete_buku/' . $item->user_id) ?>" class="delete-button">
+                                                </td><td>
+                                                    <a href="<?= base_url('admin/Data_User/delete_user/' . $item->user_id) ?>" class="delete-button">
                                                         <button type="button" class="btn btn-danger">
                                                             Hapus
                                                         </button>
@@ -450,40 +452,40 @@
         </div>
     </div>
 
-    <!-- Tambah Buku -->
+    <!-- Tambah User -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Buku</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah User</h1>
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
-                    <?php echo form_open_multipart('insert_buku_proses', 'id="bukuForm"'); ?>
+                    <?php echo form_open_multipart('insert_user_proses','id="userForm"'); ?>
 
                     <div class="form-gorup">
-                        <img id="editPreviewImage" src="<?= base_url('uploads/') ?>" alt="Preview Gambar" style="max-width: 100px; display: none;">
-                        <label for="">Gambar Buku</label>
-                        <input type="file" name="gambar" id="gambar" class="form-control" require="">
+                        <img id="editPreviewImage" src="<?= base_url('profile/') ?>" alt="Preview image" style="max-width: 100px; display: none;">
+                        <label for="">Foto User</label>
+                        <input type="file" name="image" id="image" class="form-control" require="">
                     </div>
 
                     <div class="form-gorup">
-                        <label for="">Judul Buku</label>
+                        <label for="">Email</label>
 
-                        <input type="text" name="judul" id="" class="form-control" placeholder="Judul Buku?" require="">
+                        <input type="text" name="email" id="" class="form-control" placeholder="Email?" require="">
                     </div>
                     <div class="form-gorup">
-                        <label for="">Penulis</label>
-                        <input type="text" name="penulis" id="" class="form-control" placeholder="Nama Penulis?" require="">
+                        <label for="">Username</label>
+                        <input type="text" name="username" id="" class="form-control" placeholder="Username?" require="">
                     </div>
                     <div class="form-gorup">
-                        <label for="">Penerbit</label>
-                        <input type="text" name="penerbit" id="" class="form-control" placeholder="Nama Penerbit?" require="">
+                        <label for="">Nama Lengkap</label>
+                        <input type="text" name="nama_lengkap" id="" class="form-control" placeholder="Nama Lengkap?" require="">
                     </div>
                     <div class="form-gorup">
-                        <label for="">Tahun Terbit</label>
-                        <input type="number" name="tahun_terbit" id="" class="form-control" placeholder="Tahun Terbit?" require="">
+                        <label for="">alamat</label>
+                        <input type="text" name="alamat" id="" class="form-control" placeholder="alamat?" require="">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -495,47 +497,59 @@
         </div>
     </div>
 
-    <!-- Edit Buku -->
+    <!-- Edit User -->
 
     <!-- Modal -->
-    <!-- <?php $no = 0;
+    <?php $no = 0;
             foreach ($user as $item) : $no++; ?>
         <div class="modal fade" id="edit<?php echo $item->user_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Buku</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit User</h1>
                         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
 
-                        <?php echo form_open_multipart('Buku/Update_Buku'); ?>
+                        <?php echo form_open_multipart('admin/Data_User/edit_user'); ?>
                         <input type="hidden" name="buku_id" readonly value="<?= $item->user_id; ?>">
-                        <input type="hidden" name="gambar_old" value="<?= $item->image; ?>">
+                        <input type="hidden" name="image_old" value="<?= $item->image; ?>">
 
                         <div class="form-gorup">
-                            <p>Gambar Harus Berupa jpg</p>
-                            <img id="previewImage" src="<?= base_url('uploads/') ?>" alt="Preview Gambar" style="max-width: 100px; display: none;">
-                            <label for="">Gambar Buku</label>
-                            <input type="file" name="gambar" id="gambar" class="form-control" alue="<?= $item->image; ?>">
+                            
+                            <img id="previewImage" src="<?= base_url('uploads/') ?>" alt="Preview image" style="max-width: 100px; display: none;">
+                            <label for="">Foto User</label>
+                            <input type="file" name="image" id="image" class="form-control" alue="<?= $item->image; ?>">
                         </div>
                         <br>
-                        <img src="<?php echo base_url() . './uploads/' . $item->gambar ?>" width="100">
+                        <img src="<?php echo base_url() . './profile/' . $item->image ?>" width="100">
                         <div class="form-gorup">
-                            <label for="">Judul Buku</label>
-                            <input type="text" name="judul" id="" class="form-control" value="<?= $item->judul; ?>">
+                            <label for="">Email</label>
+                            <input type="text" name="email" id="" class="form-control" value="<?= $item->email; ?>">
                         </div>
                         <div class="form-gorup">
-                            <label for="">Penulis</label>
-                            <input type="text" name="penulis" id="" class="form-control" value="<?= $item->penulis; ?>">
+                            <label for="">Username</label>
+                            <input type="text" name="username" id="" class="form-control" value="<?= $item->username; ?>" readonly>
                         </div>
                         <div class="form-gorup">
-                            <label for="">Penerbit</label>
-                            <input type="text" name="penerbit" id="" class="form-control" value="<?= $item->penerbit; ?>">
+                            <label for="">Nama Lengkap</label>
+                            <input type="text" name="nama_lengkap" id="" class="form-control" value="<?= $item->nama_lengkap; ?>">
                         </div>
                         <div class="form-gorup">
-                            <label for="">Tahun Terbit</label>
-                            <input type="number" name="tahun_terbit" id="" class="form-control" value="<?= $item->tahun_terbit; ?>">
+                            <label for="">alamat</label>
+                            <input type="text" name="alamat" id="" class="form-control" value="<?= $item->alamat; ?>">
+                        </div>
+                        <div class="form-gorup">
+                            <label for="">Role ID</label>
+                            <input type="number" name="role_id" id="" class="form-control" value="<?= $item->role_id; ?>">
+                        </div>
+                        <div class="form-gorup">
+                            <label for="">Status Active</label>
+                            <input type="number" name="is_active" id="" class="form-control" value="<?= $item->is_active; ?>">
+                        </div>
+                        <div class="form-gorup">
+                            <label for="">Tanggal pembuatan Akun</label>
+                            <input type="text" name="date_created" id="" class="form-control" value="<?= date('d F Y', $item->date_created) ?>" readonly> 
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -546,7 +560,7 @@
                 </div>
             </div>
         </div>
-    <?php endforeach; ?> -->
+    <?php endforeach; ?>
     <!-- Button trigger modal -->
 
 
@@ -573,12 +587,12 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
 
-    <script src="<?= base_url('assets/js/alert.js') ?>"></script>
+    <script src="<?= base_url('assets/js/alert_user.js') ?>"></script>
 
 
 
     <script>
-        // Fungsi untuk menampilkan gambar yang diunggah
+        // Fungsi untuk menampilkan image yang diunggah
         function previewImage(input) {
             var preview = document.getElementById('previewImage');
             preview.style.display = 'block';
@@ -592,13 +606,13 @@
         }
 
         // Menambahkan event listener untuk memanggil fungsi previewImage saat ada perubahan pada input file
-        document.getElementById('gambar').addEventListener('change', function() {
+        document.getElementById('image').addEventListener('change', function() {
             previewImage(this);
         });
     </script>
 
     <script>
-        // Fungsi untuk menampilkan gambar yang diinput pada modal edit buku
+        // Fungsi untuk menampilkan image yang diinput pada modal edit buku
         function editPreviewImage(input) {
             var preview = document.getElementById('editPreviewImage');
             preview.style.display = 'block';
@@ -612,7 +626,7 @@
         }
 
         // Menambahkan event listener untuk memanggil fungsi editPreviewImage saat terjadi perubahan pada input file
-        document.getElementById('gambar').addEventListener('change', function() {
+        document.getElementById('image').addEventListener('change', function() {
             editPreviewImage(this);
         });
     </script>

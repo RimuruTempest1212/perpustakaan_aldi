@@ -14,7 +14,7 @@
             <form action="<?= base_url('auth/login_proses') ?>" method="post">
                 <h1>Login</h1>
                 <hr>
-                <p>Selamat Datang di Perpustakaan Digital</p>
+                
                 <?= $this->session->flashdata('message'); ?>
                 <label for="">Email</label>
                 <input type="text" name="email" id="email" placeholder="example@gmail.com " value="<?= set_value('email');?>" >
@@ -33,7 +33,7 @@
             </form>
         </div>
         <div class="right">
-            <img src="<?= base_url('assets/img/bg-auth.jpg') ?>" alt="" srcset="">
+            <img src="<?= base_url('assets/img/opening.gif') ?>" alt="" srcset="" width="100%">
         </div>
     </div>
 </body>

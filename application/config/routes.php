@@ -20,6 +20,7 @@ $route['pinjaman_proses'] = 'admin/Peminjaman/pinjaman_aksi';
 $route['delete_pinjaman/(:any)'] = 'admin/Peminjaman/delete_pinjaman/$1';
 $route['update_pinjaman'] = 'admin/Peminjaman/pinjaman_aksi_update';
 $route['data_user'] = 'admin/Data_User';
+$route['insert_user_proses'] = 'admin/Data_User/tambah_user';
 $route['kategori'] = 'admin/kategori';
 
 

@@ -118,7 +118,14 @@ class Buku extends CI_Controller
         $this->load->library('upload', $config);
 
         if ($this->upload->do_upload('gambar')) {
-            $data['gambar'] = $config['file_name'] . '.' . $ext;
+            $buku =$this->db->get_where('buku',array('buku_id'=>$id))->row();
+            if($buku->gambar){
+                $previous_photo_path = './uploads/'.$buku->gambar;
+                if(file_exists($previous_photo_path)){
+                    unlink($previous_photo_path);
+                }
+            }
+            // $data['gambar'] = $config['file_name'] . '.' . $ext;
         }
         $data['judul'] = $judul;
         $data['penulis'] = $penulis;
