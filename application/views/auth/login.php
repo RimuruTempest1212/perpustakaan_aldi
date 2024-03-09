@@ -33,7 +33,7 @@
             </form>
         </div>
         <div class="right">
-            <img src="<?= base_url('assets/img/opening.gif') ?>" alt="" srcset="">
+            <img src="<?= base_url('assets/img/opening1.gif') ?>" alt="" srcset="">
         </div>
     </div>
 </body>
