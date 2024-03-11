@@ -15,38 +15,38 @@ class On_Going_model extends CI_Model
         return $query->result();
     }
 
-    public function insert_buku($data)
+    public function insert_on_going($data)
     {
-        $this->db->insert('buku', $data);
+        $this->db->insert('on_going', $data);
     }
 
-    public function get_buku_by_id($id)
+    public function get_on_going_by_id($id)
     {
-        $query = $this->db->get_where('buku', array('buku_id' => $id));
+        $query = $this->db->get_where('on_going', array('going_id' => $id));
 
         return $query->row();
     }
-    public function update_buku($buku_id, $data)
+    public function update_on_going($on_going_id, $data)
     {
-        $this->db->where('buku_id', $buku_id);
+        $this->db->where('going_id', $on_going_id);
         $this->db->set($data);
-        $this->db->update('buku', $data);
+        $this->db->update('on_going', $data);
     }
 
-    public function delete_buku($buku_id)
+    public function delete_on_going($on_going_id)
     {
 
 
-        $this->db->where('buku_id', $buku_id);
-        $this->db->delete('buku');
+        $this->db->where('on_going_id', $on_going_id);
+        $this->db->delete('on_going');
     }
 
     function delete_data($id)
     {
-        $this->db->where('buku_id', $id);
+        $this->db->where('on_going_id', $id);
 
-        return $this->db->get('buku');
-        // $this->db->delete('buku', array('buku_id' => $id));
+        return $this->db->get('on_going');
+        // $this->db->delete('on_going', array('on_going_id' => $id));
     }
 
 }
