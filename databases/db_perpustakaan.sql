@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 26, 2024 at 08:44 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Generation Time: Mar 15, 2024 at 02:36 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -95,6 +95,28 @@ CREATE TABLE `koleksipribadi` (
   `user_id` int(11) NOT NULL,
   `buku_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `on_going`
+--
+
+CREATE TABLE `on_going` (
+  `image` varchar(225) NOT NULL,
+  `sinopsis` text NOT NULL,
+  `author` varchar(255) NOT NULL,
+  `judul` varchar(225) NOT NULL,
+  `rilis` int(11) NOT NULL,
+  `going_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `on_going`
+--
+
+INSERT INTO `on_going` (`image`, `sinopsis`, `author`, `judul`, `rilis`, `going_id`) VALUES
+('default.jpg', 'asdwadsa', 'dwadsad', 'asddwa', 121205232, 4);
 
 -- --------------------------------------------------------
 
@@ -200,6 +222,12 @@ ALTER TABLE `kategoribuku`
   ADD PRIMARY KEY (`kategori_id`);
 
 --
+-- Indexes for table `on_going`
+--
+ALTER TABLE `on_going`
+  ADD PRIMARY KEY (`going_id`);
+
+--
 -- Indexes for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
@@ -233,6 +261,12 @@ ALTER TABLE `buku`
 --
 ALTER TABLE `kategoribuku`
   MODIFY `kategori_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `on_going`
+--
+ALTER TABLE `on_going`
+  MODIFY `going_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `peminjaman`
